@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Validator</title>
+    <style>
+        #validate {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #upierror {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="upi-id" placeholder="example@upi">
+    <button id="validate" onclick="validateUPI()">Validate</button>
+    <p id="upierror"></p>
+
+    <script>
+        function validateUPI() {
+            const upiInput = document.getElementById("upi-id").value;
+            const upiError = document.getElementById("upierror");
+            const upiPattern = /^[\w.-]+@[a-zA-Z]+$/; // Pattern to validate UPI format
+
+            if (upiPattern.test(upiInput)) {
+                upiError.textContent = ""; // Clear error message if valid
+                alert("UPI ID is valid!");
+            } else {
+                upiError.textContent = "Please enter a valid UPI address";
+            }
+        }
+    </script>
+</body>
+</html>
